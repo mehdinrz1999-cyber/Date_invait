@@ -1,1 +1,114 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>یه قرار با من؟ ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(135deg,#fff0f5,#ffe4ec 45%,#fff);color:#3d2630;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden}
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}.heart{position:absolute;font-size:24px;opacity:.25;animation:float 8s linear infinite}.heart:nth-child(1){left:8%;top:90%}.heart:nth-child(2){left:25%;top:70%;animation-delay:2s}.heart:nth-child(3){left:55%;top:85%;animation-delay:4s}.heart:nth-child(4){left:80%;top:75%;animation-delay:1s}
+@keyframes float{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+.card{width:min(92%,520px);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-radius:28px;padding:30px;box-shadow:0 20px 70px rgba(130,35,70,.18);position:relative;z-index:2}
+.logo{font-size:52px;text-align:center}.step{display:none}.step.active{display:block;animation:in .35s ease}.center{text-align:center}h1{font-size:28px;margin:12px 0 8px}h2{font-size:23px;margin:10px 0 22px}p{color:#765b65;line-height:1.8}.options{display:grid;gap:12px}.option{border:2px solid #f2d5df;background:#fff;border-radius:16px;padding:15px;font-size:16px;cursor:pointer;transition:.2s}.option:hover{transform:translateY(-2px);border-color:#e75c83;background:#fff7f9}.option.selected{border-color:#e43f70;background:#fff0f5}
+input,textarea{width:100%;padding:14px;border:2px solid #edd5dd;border-radius:14px;font:inherit;outline:none;background:#fff}input:focus,textarea:focus{border-color:#e75c83}
+.btn{width:100%;border:0;border-radius:16px;padding:15px;font:inherit;font-weight:bold;cursor:pointer;margin-top:18px;background:#e43f70;color:#fff;box-shadow:0 8px 20px rgba(228,63,112,.25)}.btn.secondary{background:#f8e3e9;color:#9d3b5a;box-shadow:none}.nav{display:flex;gap:10px}.nav .btn{flex:1}.progress{height:6px;background:#f4dce4;border-radius:10px;margin-bottom:25px;overflow:hidden}.bar{height:100%;width:20%;background:#e43f70;border-radius:10px;transition:.3s}.small{font-size:13px;color:#9a7a84}.success{font-size:60px}.error{background:#fff0f0;color:#a12c42;border-radius:12px;padding:12px;margin-top:14px;display:none}
+@keyframes in{from{opacity:0;transform:translateX(15px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"><span class="heart">❤️</span><span class="heart">💗</span><span class="heart">💕</span><span class="heart">❤️</span></div>
+<main class="card">
+  <div class="progress"><div class="bar" id="bar"></div></div>
 
+  <section class="step active" data-step="1">
+    <div class="logo">💌</div><div class="center">
+      <h1>مهدی یه پیشنهاد برات داره... ❤️</h1><p>چندتا سؤال کوچیکه برای اینکه یه قرار قشنگ با مهدی هماهنگ کنیم 💕</p>
+    </div>
+    <button class="btn" onclick="next()">بزن بریم 😍</button>
+  </section>
+
+  <section class="step" data-step="2">
+    <h2>با مهدی میای قرار؟ ❤️</h2>
+    <div class="options" data-key="قرار">
+      <button class="option" onclick="choose(this,'آره، با کمال میل 😍')">آره، با کمال میل 😍</button>
+      <button class="option" onclick="choose(this,'معلومه که آره ❤️')">معلومه که آره ❤️</button>
+      <button class="option" onclick="choose(this,'باید فکر کنم 😏')">باید فکر کنم 😏</button>
+    </div>
+    <button class="btn" onclick="next()">ادامه</button>
+  </section>
+
+  <section class="step" data-step="3">
+    <h2>چه تاریخی دوست داری با مهدی بریم قرار؟ 📅</h2>
+    <input id="date" type="date">
+    <button class="btn" onclick="next()">این تاریخ رو ثبت کن ❤️</button>
+  </section>
+
+  <section class="step" data-step="4">
+    <h2>چه ساعتی برات بهتره؟ مهدی خودش رو هماهنگ می‌کنه 🕐</h2>
+    <input id="time" type="time">
+    <button class="btn" onclick="next()">ادامه</button>
+  </section>
+
+  <section class="step" data-step="5">
+    <h2>مهدی به چی مهمونت کنه؟ 😍</h2>
+    <div class="options" data-key="غذا">
+      <button class="option" onclick="choose(this,'قهوه ☕')">قهوه ☕</button>
+      <button class="option" onclick="choose(this,'کباب 🥩')">کباب 🥩</button>
+      <button class="option" onclick="choose(this,'پیتزا 🍕')">پیتزا 🍕</button>
+                        <button class="option" onclick="choose(this,'انتخاب با خودت 😌')">انتخاب با خودت 😌</button>
+    </div>
+    <button class="btn" onclick="next()">ادامه</button>
+  </section>
+
+  <section class="step" data-step="6">
+    <h2>اگه چیزی هست که دوست داری به مهدی بگی، اینجا بنویس 💭</h2>
+    <textarea id="note" rows="4" placeholder="مثلاً جایی که دوست داری بریم یا هر چیزی که دوست داری مهدی بدونه..."></textarea>
+    <button class="btn" onclick="submitForm()">ثبت جواب‌ها برای مهدی 💌</button>
+    <div id="error" class="error"></div>
+  </section>
+
+  <section class="step" data-step="7">
+    <div class="center">
+      <div class="success">❤️</div>
+      <h1>جوابت به مهدی رسید! ❤️</h1>
+      <p>جوابت به دست مهدی رسید 😍<br>حالا دیگه باید منتظر اون قرار قشنگ باشیم.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+let step=1, answers={};
+const total=7;
+function show(n){
+  document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));
+  document.querySelector(`[data-step="${n}"]`).classList.add('active');
+  step=n; document.getElementById('bar').style.width=(Math.min(n,total)/total*100)+'%';
+}
+function next(){
+  if(step===2 && !answers['قرار']) return alert('اول یکی از گزینه‌ها رو انتخاب کن ❤️');
+  if(step===3 && !document.getElementById('date').value) return alert('تاریخ رو انتخاب کن 📅');
+  if(step===4 && !document.getElementById('time').value) return alert('ساعت رو انتخاب کن 🕐');
+  if(step===5 && !answers['غذا']) return alert('یکی رو انتخاب کن 😍');
+  if(step===3) answers['تاریخ']=document.getElementById('date').value;
+  if(step===4) answers['ساعت']=document.getElementById('time').value;
+  show(step+1);
+}
+function choose(el,val){
+  el.parentElement.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected'); answers[el.parentElement.dataset.key]=val;
+}
+async function submitForm(){
+  answers['یادداشت']=document.getElementById('note').value.trim() || 'ندارد';
+  const error=document.getElementById('error'); error.style.display='none';
+  try{
+    const r=await fetch('/api/answer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(answers)});
+    if(!r.ok) throw new Error('send');
+    show(7);
+  }catch(e){
+    error.textContent='ارسال جواب‌ها انجام نشد. مطمئن شو سایت روی سرور اجرا شده و تنظیمات تلگرام درست است.';
+    error.style.display='block';
+  }
+}
+</script>
+</body>
+</html>
